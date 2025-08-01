@@ -29,7 +29,7 @@ export default function FeaturesCard({
   const boxSizes = {
     sm: "h-32 md:w-96",
     md: "h-48 md:w-96",
-    lg: "h-60 md:w-96",
+    lg: "h-68 md:h-60 md:w-96",
   };
 
   return (
@@ -42,7 +42,9 @@ export default function FeaturesCard({
         {icon}
       </div>
       <h3 className="text-lg font-semibold mb-3 text-gray-800">{title}</h3>
-      <p className="text-gray-700 leading-relaxed text-sm">{description}</p>
+      <p className="text-gray-700 leading-relaxed text-xs md:text-sm">
+        {description}
+      </p>
     </div>
   );
 }

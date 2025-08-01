@@ -1,9 +1,10 @@
-import React from 'react'
+import { Overview } from "@/modules/tasks/components/overview";
 
-function Tasks() {
+export default function TasksPage() {
   return (
-    <div>Tasks</div>
-  )
+    <div>
+      {" "}
+      <Overview />{" "}
+    </div>
+  );
 }
-
-export default Tasks

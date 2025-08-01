@@ -73,11 +73,11 @@ export const featuresData = [
     color: "blue" as const,
   },
   {
-    title: "Offline Access",
+    title: "Calendar Sync",
     description:
-      "Stay productive even without internet — your schedule stays with you.",
-    icon: "☁️",
-    color: "blue" as const,
+      "Get a Syncronized calendar to keep all your events in one place.",
+    icon: "📱",
+    color: "orange" as const,
   },
 ];
 

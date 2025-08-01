@@ -4,20 +4,20 @@ import { Button } from "@/components/ui/button";
 
 export const Overview = () => {
   return (
-    <section className="flex flex-col items-center justify-center min-h-[60vh] py-8 px-2">
-      <div className="w-full max-w-lg  p-8 ">
-        <h2 className="text-3xl font-bold text-center mb-2 text-blue-500">
+    <section className="flex flex-col items-center justify-center min-h-[60vh] py-6 md:py-8 px-2">
+      <div className="w-full max-w-lg p-4 md:p-8 ">
+        <h2 className="text-xl md:text-3xl font-bold text-center mb-2 text-blue-500">
           Contact Us
         </h2>
-        <p className="text-center text-muted-foreground mb-8">
-          We&apos;d love to hear from you! Fill out the form below and our team will
-          get back to you as soon as possible.
+        <p className="text-center text-sm md:text-md text-muted-foreground mb-8">
+          We&apos;d love to hear from you! Fill out the form below and our team
+          will get back to you as soon as possible.
         </p>
         <form className="flex flex-col gap-5">
           <div>
             <label
               htmlFor="name"
-              className="block mb-1 font-medium text-foreground"
+              className="block mb-1 text-sm md:text-md font-medium text-foreground"
             >
               Name
             </label>
@@ -33,7 +33,7 @@ export const Overview = () => {
           <div>
             <label
               htmlFor="email"
-              className="block mb-1 font-medium text-foreground"
+              className="block text-sm md:text-md mb-1 font-medium text-foreground"
             >
               Email
             </label>
@@ -49,7 +49,7 @@ export const Overview = () => {
           <div>
             <label
               htmlFor="subject"
-              className="block mb-1 font-medium text-foreground"
+              className="block text-sm md:text-md mb-1 font-medium text-foreground"
             >
               Subject
             </label>
@@ -64,7 +64,7 @@ export const Overview = () => {
           <div>
             <label
               htmlFor="message"
-              className="block mb-1 font-medium text-foreground"
+              className="block mb-1 text-sm md:text-md font-medium text-foreground"
             >
               Message
             </label>

@@ -1,12 +1,9 @@
 "use client";
 
-"use client";
-
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "../stores/auth-store";
-import axios, { AxiosError } from "axios";
-
-const API_BASE_URL = "http://localhost:5000/api/v1/auth";
+import axiosClient, { ApiError } from "@/lib/axios-client";
+import { useEffect } from "react";
 
 interface SignUpData {
   firstname: string;
@@ -40,26 +37,36 @@ export const useAuth = () => {
     token,
     isAuthenticated,
     isLoading,
+    isHydrated,
     error,
     setUser,
     setToken,
     setLoading,
     setError,
+    setHydrated,
     logout: logoutStore,
     clearError,
   } = useAuthStore();
+
+  // Wait for Zustand to rehydrate from localStorage
+  useEffect(() => {
+    if (!isHydrated) {
+      setHydrated(true);
+    }
+  }, [isHydrated, setHydrated]);
 
   const signUp = async (data: SignUpData) => {
     try {
       setLoading(true);
 
-      const response = await axios.post(`${API_BASE_URL}/sign-up`, data);
+      const response = await axiosClient.post("/auth/sign-up", data);
 
       // After successful signup, redirect to login
       router.push("/login");
       return response.data;
-    } catch (error: any) {
-      const errorMessage = error?.response?.data?.message || "Sign up failed";
+    } catch (error) {
+      const errorMessage =
+        error instanceof ApiError ? error.message : "Sign up failed";
       setError(errorMessage);
       throw error;
     } finally {
@@ -71,8 +78,8 @@ export const useAuth = () => {
     try {
       setLoading(true);
 
-      const response = await axios.post<LoginResponse>(
-        `${API_BASE_URL}/login`,
+      const response = await axiosClient.post<LoginResponse>(
+        "/auth/login",
         data
       );
       const { token, user } = response.data.data;
@@ -85,8 +92,9 @@ export const useAuth = () => {
       }
 
       return response.data;
-    } catch (error: any) {
-      const errorMessage = error.response?.data?.message || "Login failed";
+    } catch (error) {
+      const errorMessage =
+        error instanceof ApiError ? error.message : "Login failed";
       setError(errorMessage);
       throw error;
     } finally {
@@ -104,6 +112,7 @@ export const useAuth = () => {
     token,
     isAuthenticated,
     isLoading,
+    isHydrated,
     error,
     signUp,
     login,

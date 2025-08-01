@@ -9,16 +9,17 @@ export default function DashboardAuthGuard({
 }: {
   children: React.ReactNode;
 }) {
-  const { isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated, isLoading, isHydrated } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
+    if (isHydrated && !isLoading && !isAuthenticated) {
       router.push("/login");
     }
-  }, [isAuthenticated, isLoading, router]);
+  }, [isAuthenticated, isLoading, isHydrated, router]);
 
-  if (isLoading) {
+  // Show loading while Zustand is rehydrating or while checking auth
+  if (!isHydrated || isLoading) {
     return (
       <div className="flex items-center justify-center h-screen">
         <div className="text-center">

@@ -5,21 +5,21 @@ export const Overview = () => {
       <section className="w-full bg-gradient-to-br from-[#7B2FF2] via-[#2998FF] to-[#00C9FF] py-12 px-4 flex items-center justify-center min-h-[450px]">
         <div className="w-[95%] md:w-[85%] flex flex-col md:flex-row items-center justify-between gap-10">
           <div className="flex-1 max-w-xl text-left text-white">
-            <h1 className="font-bold text-3xl md:text-4xl mb-4 ">
+            <h1 className="font-bold text-xl md:text-4xl mb-4 ">
               About Schedule Ace
             </h1>
             <h2 className="font-semibold text-lg md:text-xl mb-4 ">
-              Organize your student life — one smart plan at a time.
+              Organize your student life, one smart plan at a time.
             </h2>
-            <p className="mb-4 ">
-              At Schedule Ace, we believe that productivity should feel simple —
+            <p className="mb-4 text-sm md:text-md">
+              At Schedule Ace, we believe that productivity should feel simple,
               not stressful.
             </p>
-            <p className="mb-4 ">
-              Whether you&apos;re managing a full course load, planning your meals,
-              tracking expenses, or juggling side responsibilities.
+            <p className="mb-4 text-sm md:text-md">
+              Whether you&apos;re managing a full course load, planning your
+              meals, tracking expenses, or juggling side responsibilities.
             </p>
-            <p className="">
+            <p className="text-sm md:text-md">
               We’re here to help you stay focused, organized, and in control.
             </p>
           </div>
@@ -30,12 +30,14 @@ export const Overview = () => {
       <section className="w-full flex flex-col items-center bg-white">
         <div className="w-[90%] md:w-[85%] mt-10 space-y-12">
           {/* Mission */}
-          <div className="flex flex-col md:flex-row items-center gap-8 justify-between">
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 justify-between">
             <div className="w-full md:max-w-lg">
               <span className="text-sm text-[#2998FF] font-semibold">
                 Mission
               </span>
-              <h2 className="font-bold text-2xl mt-1 mb-2">Our Mission</h2>
+              <h2 className="font-bold text-xl md:text-2xl mt-1 mb-2">
+                Our Mission
+              </h2>
               <p className="text-gray-700 mb-4">
                 To empower students with a flexible, all-in-one tool that helps
                 them manage academic work and personal commitments more
@@ -43,7 +45,7 @@ export const Overview = () => {
               </p>
             </div>
             <div className="rounded-xl w-full md:max-w-sm shadow-md bg-white p-5 mt-4 border border-gray-100">
-              <span className="block text-black font-bold text-lg">
+              <span className="block text-black font-medium md:font-bold text-md md:text-lg">
                 Empowering students to take control of{" "}
                 <span className="text-[#2998FF]">
                   their academic and personal lives with one smart, all-in-one
@@ -56,7 +58,7 @@ export const Overview = () => {
           {/* Vision */}
           <div className="flex flex-col-reverse md:flex-row items-center gap-8 justify-between">
             <div className="rounded-xl w-full md:max-w-sm shadow-md bg-white p-6 border border-gray-100 flex items-center">
-              <span className="font-bold text-lg text-gray-800">
+              <span className="font-medium md:font-bold text-md md:text-lg text-gray-800">
                 Too many tools. Too much chaos.{" "}
                 <span className="text-[#2998FF]">
                   Schedule Ace brings it all together tasks, deadlines, and
@@ -69,7 +71,7 @@ export const Overview = () => {
               <span className="text-sm text-[#2998FF] font-semibold">
                 Vision
               </span>
-              <h2 className="font-bold text-2xl mt-1 mb-2">
+              <h2 className="font-bold text-xl md:text-2xl mt-1 mb-2">
                 Why We Built Schedule Ace?
               </h2>
               <p className="text-gray-700 mb-4">
@@ -96,7 +98,9 @@ export const Overview = () => {
               <span className="text-sm text-[#2998FF] font-semibold">
                 Service
               </span>
-              <h2 className="font-bold text-2xl mt-1 mb-2">Who We Serve</h2>
+              <h2 className="font-bold text-xl md:text-2xl mt-1 mb-2">
+                Who We Serve
+              </h2>
               <p className="text-gray-700 mb-4">
                 Students at every level, from secondary school to university,
                 who want to stay on top of their academic workload while
@@ -111,7 +115,7 @@ export const Overview = () => {
 
             <div className="w-full md:max-w-sm ">
               <div className="rounded-xl shadow-md bg-white p-6 border border-gray-100 flex items-center">
-                <span className="font-bold text-lg">
+                <span className="font-medium md:font-bold text-md md:text-lg">
                   Stay sharp, stay balanced,{" "}
                   <span className="text-[#2998FF]">All in one place.</span>
                 </span>

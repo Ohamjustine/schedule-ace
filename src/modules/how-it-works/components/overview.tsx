@@ -8,15 +8,15 @@ export default function HowItWorksPage() {
       {/* Hero Section  */}
       <div className="bg-[#E7F0FD] flex items-center justify-center">
         <div className="w-[90%] md:max-w-[80%] py-16 px-4 flex flex-col items-center justify-center ">
-          <h1 className="font-bold text-center max-w-3xl text-4xl">
+          <h1 className="font-bold text-center max-w-3xl text-xl md:text-4xl">
             How It Works.
           </h1>
-          <p className="text-center max-w-2xl my-7">
+          <p className="text-sm md:text-md text-center max-w-2xl my-7">
             One planner. Every part of your student life. <br />
             Schedule Ace makes it easy for students to stay organized not just
             with schoolwork, but with everything else life throws at them.{" "}
           </p>
-          <span className="text-center">
+          <span className="text-center text-sm md:text-md">
             <b>Here&apos;s how it works in three simple steps:</b>
           </span>
         </div>
@@ -44,9 +44,9 @@ export default function HowItWorksPage() {
       <div className="bg-blue-500 py-16">
         <div className="w-[90%] md:max-w-[80%] mx-auto px-4">
           <div className="text-white p-8 ">
-            <div className="flex items-center justify-center mb-6">
-              <span className="text-2xl mr-2">💡</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-center">
+            <div className="flex flex-col md:flex-row items-center justify-center mb-6">
+              <span className="text-2xl mr-0 md:mr-2">💡</span>
+              <h2 className="text-3xl mt-2 md:mt-0 md:text-4xl font-bold text-center">
                 It&apos;s More Than a School Planner
               </h2>
             </div>

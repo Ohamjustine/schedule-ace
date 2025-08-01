@@ -13,7 +13,7 @@ export default function DashboardNavbar({
   };
 
   return (
-    <header className="w-full h-16 md:h-20 flex items-center justify-between px-4 md:px-6 bg-white border-b border-gray-200 shadow-sm">
+    <header className="w-full h-16 md:h-20 flex items-center justify-between px-4 md:px-6 bg-white border-b border-gray-200 shadow-xs">
       {/* Left: Mobile menu button and title */}
       <div className="flex items-center gap-4">
         {/* Mobile hamburger */}
@@ -37,7 +37,7 @@ export default function DashboardNavbar({
         </button>
 
         {/* Page title - hidden on mobile when logo is in sidebar */}
-        <h1 className="text-xl md:text-2xl font-semibold text-gray-800">
+        <h1 className="text-lg md:text-xl font-semibold text-gray-800">
           Dashboard
         </h1>
       </div>

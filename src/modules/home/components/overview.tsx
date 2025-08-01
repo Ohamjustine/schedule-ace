@@ -12,6 +12,7 @@ import WhyScheduleCard from "./why-schedule-card";
 import HowItWorksCard from "./how-it-works-card";
 import FeaturesCard from "../../features/components/features-card";
 import TestimonialSlider from "./testimonial-slider";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
@@ -29,9 +30,11 @@ export default function HomePage() {
               Every assignment, idea, or responsibility no matter how small
               finds its place, helping you stay ahead and stress-free.
             </p>
-            <button className="bg-[#337AFF] text-sm cursor-pointer text-white rounded-full px-10 md:px-8 py-2">
-              Get Started
-            </button>
+            <Link href="/sign-up">
+              <button className="bg-[#337AFF] text-sm cursor-pointer text-white rounded-full px-10 md:px-8 py-2">
+                Get Started
+              </button>
+            </Link>
           </div>
 
           <div className="flex mt-8 md:mt-0 w-full md:w-[50%] items-center justify-end flex-1">
@@ -104,9 +107,11 @@ export default function HomePage() {
         </div>
 
         <div className="text-center mt-16">
-          <button className="bg-white font-semibold text-blue-500 px-8 py-3 rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 cursor-pointer shadow-xl transform hover:-translate-y-1">
-            Get Started
-          </button>
+          <Link href="/sign-up">
+            <button className="bg-white font-semibold text-blue-500 px-8 py-3 rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 cursor-pointer shadow-xl transform hover:-translate-y-1">
+              Get Started
+            </button>
+          </Link>
         </div>
       </div>
 

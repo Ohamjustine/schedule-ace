@@ -1,7 +1,9 @@
-import React from 'react'
+import { Overview } from "@/modules/notes/components/overview";
 
-export default function Notes() {
+export default function NotesPage() {
   return (
-    <div>Notes</div>
-  )
+    <div>
+      <Overview />
+    </div>
+  );
 }
