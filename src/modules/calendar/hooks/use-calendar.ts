@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axiosClient, { ApiError } from "@/lib/axios-client";
 import { CalendarResponse, DateResponse, CalendarData } from "@/types/calendar";
 
@@ -9,7 +9,7 @@ export const useCalendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
-  const fetchCalendarData = async (month: number, year: number) => {
+  const fetchCalendarData = useCallback(async (month: number, year: number) => {
     setLoading(true);
     setError(null);
     try {
@@ -24,9 +24,9 @@ export const useCalendar = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const fetchDateData = async (date: string) => {
+  const fetchDateData = useCallback(async (date: string) => {
     setLoading(true);
     setError(null);
     try {
@@ -42,7 +42,7 @@ export const useCalendar = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   const navigateMonth = (direction: "prev" | "next") => {
     if (direction === "next") {
@@ -64,7 +64,7 @@ export const useCalendar = () => {
 
   useEffect(() => {
     fetchCalendarData(currentMonth, currentYear);
-  }, [currentMonth, currentYear]);
+  }, [currentMonth, currentYear, fetchCalendarData]);
 
   return {
     calendarData,

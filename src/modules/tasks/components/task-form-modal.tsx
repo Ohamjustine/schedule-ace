@@ -147,6 +147,7 @@ export default function TaskFormModal({
               <SelectContent>
                 <SelectItem value="academic">Academic</SelectItem>
                 <SelectItem value="personal">Personal</SelectItem>
+                <SelectItem value="financial">Financial</SelectItem>
               </SelectContent>
             </Select>
           </div>

@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { useCalendar } from "../hooks/use-calendar";
 import { CalendarDayData } from "@/types/calendar";
+import { DailyViewModal } from "./daily-view-modal";
 
 const MONTHS = [
   "January",
@@ -21,6 +23,9 @@ const MONTHS = [
 const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export const Overview = () => {
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [isDailyViewOpen, setIsDailyViewOpen] = useState(false);
+
   const {
     calendarData,
     loading,
@@ -29,6 +34,34 @@ export const Overview = () => {
     currentYear,
     navigateMonth,
   } = useCalendar();
+
+  const handleDayClick = (dateKey: string) => {
+    setSelectedDate(dateKey);
+    setIsDailyViewOpen(true);
+  };
+
+  const closeDailyView = () => {
+    setIsDailyViewOpen(false);
+    setSelectedDate(null);
+  };
+
+  const goToToday = () => {
+    const today = new Date();
+    const todayString = `${today.getFullYear()}-${String(
+      today.getMonth() + 1
+    ).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+    setSelectedDate(todayString);
+    setIsDailyViewOpen(true);
+  };
+
+  const isToday = (day: number) => {
+    const today = new Date();
+    return (
+      day === today.getDate() &&
+      currentMonth === today.getMonth() + 1 &&
+      currentYear === today.getFullYear()
+    );
+  };
 
   const getDaysInMonth = (month: number, year: number) => {
     return new Date(year, month, 0).getDate();
@@ -59,9 +92,25 @@ export const Overview = () => {
       days.push(
         <div
           key={day}
-          className="p-2 border border-gray-200 min-h-[100px] bg-white hover:bg-gray-50"
+          className={`p-2 border border-gray-200 min-h-[100px] bg-white hover:bg-gray-50 cursor-pointer transition-colors ${
+            dayData &&
+            (dayData.tasks.length > 0 ||
+              dayData.events.length > 0 ||
+              dayData.notifications.length > 0)
+              ? "ring-2 ring-blue-200 hover:ring-blue-300"
+              : ""
+          }`}
+          onClick={() => handleDayClick(dateKey)}
         >
-          <div className="font-semibold text-sm mb-1">{day}</div>
+          <div
+            className={`font-semibold text-sm mb-1 ${
+              isToday(day)
+                ? "bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center mx-auto"
+                : ""
+            }`}
+          >
+            {day}
+          </div>
           {dayData && (
             <div className="space-y-1">
               {dayData.tasks.slice(0, 2).map((task) => (
@@ -83,6 +132,13 @@ export const Overview = () => {
               {dayData.tasks.length + dayData.events.length > 4 && (
                 <div className="text-xs text-gray-500">
                   +{dayData.tasks.length + dayData.events.length - 4} more
+                </div>
+              )}
+              {(dayData.tasks.length > 0 ||
+                dayData.events.length > 0 ||
+                dayData.notifications.length > 0) && (
+                <div className="text-xs text-blue-600 font-medium mt-1">
+                  Click to view details
                 </div>
               )}
             </div>
@@ -118,7 +174,7 @@ export const Overview = () => {
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigateMonth("prev")}
-            className="px-3 py-1 bg-blue-500 text-white hover:bg-gray-300 rounded"
+            className="px-3 py-1 bg-blue-500 text-white hover:bg-blue-600 rounded transition-colors"
           >
             ←
           </button>
@@ -127,9 +183,15 @@ export const Overview = () => {
           </span>
           <button
             onClick={() => navigateMonth("next")}
-            className="px-3 py-1 bg-blue-400 text-white hover:bg-gray-300 rounded"
+            className="px-3 py-1 bg-blue-500 text-white hover:bg-blue-600 rounded transition-colors"
           >
             →
+          </button>
+          <button
+            onClick={goToToday}
+            className="px-4 py-1 bg-green-500 text-white hover:bg-green-600 rounded transition-colors text-sm"
+          >
+            Today
           </button>
         </div>
       </div>
@@ -164,6 +226,14 @@ export const Overview = () => {
         </div>
       )}
 
+      {/* Calendar Instructions */}
+      <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+        <p className="text-sm text-blue-800">
+          💡 <strong>Tip:</strong> Click on any day to view detailed information
+          about tasks, events, and notifications for that day.
+        </p>
+      </div>
+
       {/* Calendar Grid */}
       <div className="bg-white rounded-lg shadow">
         {/* Days of week header */}
@@ -186,6 +256,13 @@ export const Overview = () => {
           </div>
         </div>
       </div>
+
+      {/* Daily View Modal */}
+      <DailyViewModal
+        isOpen={isDailyViewOpen}
+        onClose={closeDailyView}
+        selectedDate={selectedDate}
+      />
     </div>
   );
 };

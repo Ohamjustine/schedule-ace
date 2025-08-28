@@ -1,3 +1,39 @@
+// Utility function to generate random Avataaars URLs with different skin and hair colors
+const generateAvatarUrl = (gender: 'man' | 'woman'): string => {
+  const hairColors = [
+    'Auburn',
+    'Black',
+    'Blonde',
+    'BlondeGolden',
+    'Brown',
+    'BrownDark',
+    'PastelPink',
+    'Platinum',
+    'Red',
+    'SilverGray'
+  ];
+  
+  const skinColors = [
+    'Tanned',
+    'Yellow',
+    'Pale',
+    'Light',
+    'Brown',
+    'DarkBrown',
+    'Black'
+  ];
+  
+  // Randomly select hair and skin colors
+  const hairColor = hairColors[Math.floor(Math.random() * hairColors.length)];
+  const skinColor = skinColors[Math.floor(Math.random() * skinColors.length)];
+  
+  // Choose top type based on gender
+  const topType = gender === 'woman' ? 'LongHairStraight' : 'ShortHairShortFlat';
+  
+  // Build the URL with the base parameters and random colors
+  return `https://avataaars.io/?avatarStyle=Circle&topType=${topType}&accessoriesType=Blank&hairColor=${hairColor}&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=${skinColor}`;
+};
+
 export const whyScheduleAceData = [
   {
     title: "🔔 Smart Reminders",
@@ -89,8 +125,7 @@ export const testimonialsData = [
     content:
       "Schedule Ace transformed how I manage my coursework. The weekly planner view is exactly what I needed to stay on top of multiple projects and deadlines.",
     rating: 5,
-    avatar:
-      "/assets/Leonardo_Phoenix_10_a_photograph_of_a_young_adult_female_medic_0 1.png",
+    avatar: generateAvatarUrl("woman"),
   },
   {
     name: "Michael Chen",
@@ -99,8 +134,7 @@ export const testimonialsData = [
     content:
       "The study timer feature is a game-changer. I've improved my focus sessions and my grades have never been better. Highly recommend!",
     rating: 5,
-    avatar:
-      "/assets/Leonardo_Phoenix_10_a_young_adult_male_student_likely_in_his_e_3 1.png",
+    avatar: generateAvatarUrl("man"),
   },
   {
     name: "Emily Rodriguez",
@@ -109,8 +143,7 @@ export const testimonialsData = [
     content:
       "Finally, a scheduling app that understands student life. The task modal makes adding assignments so quick, and the reminders keep me from missing anything important.",
     rating: 5,
-    avatar:
-      "/assets/Leonardo_Phoenix_10_a_photograph_of_a_young_adult_female_medic_0 1.png",
+    avatar: generateAvatarUrl("woman"),
   },
   {
     name: "David Kim",
@@ -119,27 +152,24 @@ export const testimonialsData = [
     content:
       "Between classes, clinical rotations, and study sessions, I was always overwhelmed. Schedule Ace helped me organize everything and actually find time for myself.",
     rating: 5,
-    avatar:
-      "/assets/Leonardo_Phoenix_10_a_young_adult_male_student_likely_in_his_e_3 1.png",
+    avatar: generateAvatarUrl("man"),
   },
   {
-    name: "David Kim",
-    role: "Medical Student",
-    university: "Johns Hopkins",
+    name: "Lisa Thompson",
+    role: "Psychology Student",
+    university: "UCLA",
     content:
-      "Between classes, clinical rotations, and study sessions, I was always overwhelmed. Schedule Ace helped me organize everything and actually find time for myself.",
+      "The visual scheduling feature is incredible. I can see my entire week at a glance and plan my study sessions around my classes perfectly.",
     rating: 5,
-    avatar:
-      "/assets/Leonardo_Phoenix_10_a_young_adult_male_student_likely_in_his_e_3 1.png",
+    avatar: generateAvatarUrl("woman"),
   },
   {
-    name: "David Kim",
-    role: "Medical Student",
-    university: "Johns Hopkins",
+    name: "Alex Martinez",
+    role: "Art History Student",
+    university: "NYU",
     content:
-      "Between classes, clinical rotations, and study sessions, I was always overwhelmed. Schedule Ace helped me organize everything and actually find time for myself.",
+      "As someone who juggles multiple creative projects, Schedule Ace helps me stay organized without feeling overwhelmed. The interface is beautiful and intuitive.",
     rating: 5,
-    avatar:
-      "/assets/Leonardo_Phoenix_10_a_young_adult_male_student_likely_in_his_e_3 1.png",
+    avatar: generateAvatarUrl("man"),
   },
 ];
